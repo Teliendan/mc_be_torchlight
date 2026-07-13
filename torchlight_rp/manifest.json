@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Glowing Torchflower RP",
+        "description": "Model + texture for the glowing torchflower.",
+        "uuid": "77800da9-874a-4e32-99a2-35ef6203ce25",
+        "version": [1, 0, 0],
+        "min_engine_version": [1, 21, 120]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "e78e0f7c-e1bb-4316-80bf-06dfb0cb5cbc",
+            "version": [1, 0, 0]
+        }
+    ],
+    "dependencies": [
+        { "uuid": "694c0df2-57af-4886-89ea-20a069698b28", "version": [1, 0, 0] }
+    ]
+}

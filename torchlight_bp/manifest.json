@@ -1,0 +1,28 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Glowing Torchflower BP",
+        "description": "Makes torchflowers emit light (level 14).",
+        "uuid": "694c0df2-57af-4886-89ea-20a069698b28",
+        "version": [1, 0, 0],
+        "min_engine_version": [1, 21, 120]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "57692bce-d821-4cfb-9603-4f842138132c",
+            "version": [1, 0, 0]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "uuid": "9620f6dd-ffbd-4d0b-97c2-02ba50233d21",
+            "version": [1, 0, 0],
+            "entry": "scripts/main.js"
+        }
+    ],
+    "dependencies": [
+        { "module_name": "@minecraft/server", "version": "2.8.0" },
+        { "uuid": "77800da9-874a-4e32-99a2-35ef6203ce25", "version": [1, 0, 0] }
+    ]
+}

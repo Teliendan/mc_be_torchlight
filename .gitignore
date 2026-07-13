@@ -1,0 +1,9 @@
+# Packaging output
+*.mcpack
+*.mcaddon
+*.zip
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+*.log
