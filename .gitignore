@@ -1,9 +1,4 @@
-# Packaging output
-*.mcpack
-*.mcaddon
-*.zip
-
-# OS/editor cruft
-.DS_Store
-Thumbs.db
-*.log
+__pycache__/
+*.pyc
+temp/
+node_modules/
