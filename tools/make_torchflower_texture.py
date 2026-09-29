@@ -20,7 +20,7 @@ import re
 import shutil
 import sys
 
-VANILLA_ROOT = r"E:\AI\ref\bedrock\current\resource_packs"
+VANILLA_ROOT = r"C:\mcmods\reference\vanilla\current\resource_packs"
 REL = os.path.join("textures", "blocks", "torchflower.png")
 DEST = os.path.join(MOD, "torchlight_rp", REL)
 
@@ -33,7 +33,7 @@ def pack_sort_key(name):
 def newest_vanilla_copy():
     if not os.path.isdir(VANILLA_ROOT):
         sys.exit("vanilla reference not found at {} -- run "
-                 r"E:\AI\ref\bedrock\refresh_bedrock_ref.ps1".format(VANILLA_ROOT))
+                 r"C:\mcmods\tools\refresh_vanilla_ref.ps1".format(VANILLA_ROOT))
     found = []
     for pack in os.listdir(VANILLA_ROOT):
         candidate = os.path.join(VANILLA_ROOT, pack, REL)
