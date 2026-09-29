@@ -13,5 +13,6 @@
             "uuid": "e78e0f7c-e1bb-4316-80bf-06dfb0cb5cbc",
             "version": [1, 0, 0]
         }
-    ]
+    ],
+    "capabilities": ["pbr"]
 }
