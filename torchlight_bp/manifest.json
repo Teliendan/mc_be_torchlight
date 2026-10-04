@@ -1,8 +1,8 @@
 {
     "format_version": 2,
     "header": {
-        "name": "Glowing Torchflower BP",
-        "description": "Makes torchflowers emit light (level 14).",
+        "name": "pack.name",
+        "description": "pack.description",
         "uuid": "694c0df2-57af-4886-89ea-20a069698b28",
         "version": [1, 0, 0],
         "min_engine_version": [1, 21, 120]

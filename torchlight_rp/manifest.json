@@ -1,8 +1,8 @@
 {
     "format_version": 2,
     "header": {
-        "name": "Glowing Torchflower RP",
-        "description": "Model + texture for the glowing torchflower.",
+        "name": "pack.name",
+        "description": "pack.description",
         "uuid": "77800da9-874a-4e32-99a2-35ef6203ce25",
         "version": [1, 0, 0],
         "min_engine_version": [1, 21, 120]

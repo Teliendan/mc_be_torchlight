@@ -92,3 +92,7 @@ it to fall back to resolving the vanilla path through the resource pack stack.
   a flower pot (vanilla flower pots only accept a fixed vanilla block list).
 - Migration on first load only sweeps a volume around the spawning player; distant bases need a
   manual `/scriptevent torchlight:sweep` run nearby.
+
+## Localization
+
+Nine locales use a mod-scoped contextual catalog. See [the localization notes](docs/LOCALIZATION.md) before adding or changing player-facing text.

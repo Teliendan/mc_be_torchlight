@@ -1,3 +1,4 @@
+import { message } from "./messages.js";
 import { world, system, BlockPermutation, ItemStack } from "@minecraft/server";
 
 // ---------------------------------------------------------------------------
@@ -135,7 +136,7 @@ world.afterEvents.playerBreakBlock.subscribe((e) => {
 //    hang the tick or trip the script watchdog.
 function sweepAround(player, radius, height, label) {
     if (sweepRunning) {
-        player.sendMessage("§cA sweep is already running.");
+        player.sendMessage(message("sweep.busy"));
         return;
     }
     sweepRunning = true;
@@ -167,8 +168,8 @@ function sweepAround(player, radius, height, label) {
         sweepRunning = false;
         player.sendMessage(
             converted > 0
-                ? `§a${label} complete: §f${converted}§a torchflower(s) now glow.`
-                : `§7${label} complete: no existing torchflowers found nearby.`
+                ? message(`${label}.complete`, converted)
+                : message(`${label}.empty`)
         );
     }());
 }
@@ -178,8 +179,8 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
     if (e.id !== "torchlight:sweep") return;
     const player = e.sourceEntity;
     if (!player) return;
-    player.sendMessage("§7Sweeping for existing torchflowers...");
-    sweepAround(player, SWEEP_RADIUS, SWEEP_HEIGHT, "Sweep");
+    player.sendMessage(message("sweep.start"));
+    sweepAround(player, SWEEP_RADIUS, SWEEP_HEIGHT, "sweep");
 }, { namespaces: ["torchlight"] });
 
 // 5) First-run migration: convert torchflowers that already existed in the world
@@ -191,8 +192,8 @@ world.afterEvents.playerSpawn.subscribe((e) => {
     // Set the flag first so this can't run twice.
     world.setDynamicProperty(MIGRATED_PROP, true);
 
-    e.player.sendMessage("§7Glowing Torchflower: first-time setup, converting existing torchflowers nearby...");
-    sweepAround(e.player, MIGRATE_RADIUS, MIGRATE_HEIGHT, "First-time setup");
+    e.player.sendMessage(message("setup.start"));
+    sweepAround(e.player, MIGRATE_RADIUS, MIGRATE_HEIGHT, "setup");
 });
 
 world.afterEvents.worldLoad.subscribe(() => {

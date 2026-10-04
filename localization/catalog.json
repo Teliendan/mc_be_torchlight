@@ -1,0 +1,729 @@
+{
+  "version": 1,
+  "locales": [
+    "en_US",
+    "cs_CZ",
+    "es_ES",
+    "es_MX",
+    "pt_PT",
+    "pt_BR",
+    "de_DE",
+    "fr_FR",
+    "pl_PL"
+  ],
+  "policy": "AI-authored contextual translations; independent language review and in-game layout testing pending. en_GB aliases en_US and fr_CA aliases fr_FR. Preserve lore names and mod brands.",
+  "packs": {
+    "torchlight_bp": {
+      "kind": "behavior",
+      "entries": {
+        "pack.name": {
+          "source": "Torchlight — Behavior Pack",
+          "context": {
+            "meaning": "Pack title or description for torchlight_bp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.",
+            "location": "torchlight_bp: pack selection screen",
+            "trigger": "Shown when the player views or uses this content.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Pack title or a complete description; localize pack type and descriptive words.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Torchlight — Balíček chování",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Torchlight — Paquete de comportamiento",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Torchlight — Paquete de comportamiento",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Torchlight — Pacote de comportamento",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Torchlight — Pacote de comportamento",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Torchlight — Verhaltenspaket",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Torchlight — Pack de comportement",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Torchlight — Pakiet zachowań",
+              "based_on": "3e61d98ea988759fba7eb358bfd8afcd916d78c63d85a87d352d4cb2cdcb5f4a",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "pack.description": {
+          "source": "Torchlight behavior pack: makes torchflowers emit light at level 14.",
+          "context": {
+            "meaning": "Pack title or description for torchlight_bp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.",
+            "location": "torchlight_bp: pack selection screen",
+            "trigger": "Shown when the player views or uses this content.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Pack title or a complete description; localize pack type and descriptive words.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Balíček chování Torchlight: okrasné zázvory vydávají světlo úrovně 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Paquete de comportamiento de Torchlight: los bastones de emperador emiten luz de nivel 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Paquete de comportamiento de Torchlight: las anflorchas emiten luz de nivel 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Pacote de comportamento de Torchlight: as flores-de-tocha emitem luz de nível 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Pacote de comportamento de Torchlight: as plantochas emitem luz de nível 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Verhaltenspaket für Torchlight: Fackelblumen leuchten mit Lichtstufe 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Pack de comportement de Torchlight : les torches-fleurs émettent une lumière de niveau 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Pakiet zachowań Torchlight: etlingery wyniosłe emitują światło o poziomie 14.",
+              "based_on": "43cf80cde293220192a31c3de718eb6e661a165fe55a99588b62b6f966c47df2",
+              "status": "ai-draft"
+            }
+          }
+        }
+      }
+    },
+    "torchlight_rp": {
+      "kind": "resource",
+      "entries": {
+        "tile.torchlight:torchflower.name": {
+          "source": "Torchflower",
+          "context": {
+            "meaning": "Name of the vanilla torchflower, preserved for its visually identical glowing replacement. Match Bedrock localization, which differs from Java in several locales.",
+            "location": "torchlight_rp: inventory/block tooltip, entity name or spawn egg",
+            "trigger": "Viewed in inventory, Creative inventory, block targeting or entity UI, as appropriate to this key.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Standalone noun phrase, no sentence punctuation.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Zázvor okrasný",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Bastón de emperador",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Anflorcha",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Flor-de-Tocha",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Plantocha",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Fackelblume",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Torche-fleur",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Etlingera wyniosła",
+              "based_on": "7ff251ce8ef04ef4fb343fd54455395779d7003d95c1292ed3d8ed29c62ca198",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.sweep.busy": {
+          "source": "§cA sweep is already running.",
+          "context": {
+            "meaning": "Torchflower conversion scan already running; another scan is not started.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "Torchflower conversion scan already running; another scan is not started.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": [
+              "torchlight_bp/scripts/main.js"
+            ]
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "§cProhledávání už běží.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§cYa hay una búsqueda en curso.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§cYa hay una búsqueda en curso.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§cJá está uma pesquisa em curso.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§cJá há uma busca em andamento.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§cEine Suche läuft bereits.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§cUne recherche est déjà en cours.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§cWyszukiwanie już trwa.",
+              "based_on": "178842a3803170e8bb93afb6bbc55ca2072bb62f4f47c6719de3f033aa599a69",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.sweep.start": {
+          "source": "§7Sweeping for existing torchflowers...",
+          "context": {
+            "meaning": "Manual conversion of already existing torchflowers near the player is starting.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "Manual conversion of already existing torchflowers near the player is starting.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": [
+              "torchlight_bp/scripts/main.js"
+            ]
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "§7Hledají se okrasné zázvory v okolí…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§7Buscando bastones de emperador cercanos…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§7Buscando anflorchas cercanas…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§7A procurar flores-de-tocha nas proximidades…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§7Procurando plantochas por perto…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§7Suche nach Fackelblumen in der Nähe…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§7Recherche de torches-fleurs à proximité…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§7Wyszukiwanie etlinger wyniosłych w pobliżu…",
+              "based_on": "64111456fc4bff47c89c3a9766e285cdd0428a1abf739d35fb9b8581e2f4fbf3",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.setup.start": {
+          "source": "§7Glowing Torchflower: first-time setup, converting existing torchflowers nearby...",
+          "context": {
+            "meaning": "One-time world migration after installation: existing nearby torchflowers become glowing custom blocks.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "One-time world migration after installation: existing nearby torchflowers become glowing custom blocks.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": [
+              "torchlight_bp/scripts/main.js"
+            ]
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "§7Svítící okrasný zázvor: úvodní nastavení, rozsvěcují se okrasné zázvory v okolí…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§7Bastón de emperador luminoso: configuración inicial, activando las flores cercanas…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§7Anflorcha luminosa: configuración inicial, activando las flores cercanas…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§7Flor-de-tocha luminosa: configuração inicial, a ativar as flores próximas…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§7Plantocha luminosa: configuração inicial, ativando as flores próximas…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§7Leuchtende Fackelblume: Ersteinrichtung, Fackelblumen in der Nähe werden aktiviert…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§7Torche-fleur lumineuse : première configuration, activation des fleurs à proximité…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§7Świecąca etlingera wyniosła: pierwsza konfiguracja, aktywowanie kwiatów w pobliżu…",
+              "based_on": "57268692c30b7884d3a682e5a8a7a2114f677960934f49db71a7df80e0ad1989",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.sweep.complete": {
+          "source": "§aSweep complete. §fTorchflowers now glowing: %s.",
+          "context": {
+            "meaning": "Manual conversion completed; count is converted flowers. Use a count label to avoid count-dependent grammar.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "Manual conversion completed; count is converted flowers. Use a count label to avoid count-dependent grammar.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": []
+          },
+          "placeholders": [
+            {
+              "name": "converted_count",
+              "type": "string",
+              "meaning": "converted_count: torchflowers changed to glowing blocks"
+            }
+          ],
+          "translations": {
+            "cs_CZ": {
+              "text": "§aProhledávání dokončeno. §fPočet rozsvícených okrasných zázvorů: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§aBúsqueda terminada. §fBastones de emperador activados: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§aBúsqueda terminada. §fAnflorchas activadas: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§aPesquisa concluída. §fFlores-de-tocha ativadas: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§aBusca concluída. §fPlantochas ativadas: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§aSuche abgeschlossen. §fAktivierte Fackelblumen: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§aRecherche terminée. §fTorches-fleurs activées : %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§aWyszukiwanie zakończone. §fAktywowane etlingery wyniosłe: %s.",
+              "based_on": "03a7be261cd880ac2216c42f6403c87915f738c2c9a97a015595ce88a1614200",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.sweep.empty": {
+          "source": "§7Sweep complete: no existing torchflowers found nearby.",
+          "context": {
+            "meaning": "Manual scan completed without finding existing torchflowers nearby.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "Manual scan completed without finding existing torchflowers nearby.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": []
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "§7Prohledávání dokončeno: v okolí nejsou žádné okrasné zázvory.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§7Búsqueda terminada: no hay bastones de emperador cercanos.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§7Búsqueda terminada: no hay anflorchas cercanas.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§7Pesquisa concluída: não foram encontradas flores-de-tocha próximas.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§7Busca concluída: nenhuma plantocha encontrada por perto.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§7Suche abgeschlossen: keine Fackelblumen in der Nähe gefunden.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§7Recherche terminée : aucune torche-fleur trouvée à proximité.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§7Wyszukiwanie zakończone: brak etlinger wyniosłych w pobliżu.",
+              "based_on": "eb46fe222b8655925c6dc5c0fda56f90cfc6b16423bdf3b2aa5da4925cdda2c0",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.setup.complete": {
+          "source": "§aFirst-time setup complete. §fTorchflowers now glowing: %s.",
+          "context": {
+            "meaning": "One-time migration completed; count is converted flowers. Use a count label to avoid count-dependent grammar.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "One-time migration completed; count is converted flowers. Use a count label to avoid count-dependent grammar.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": []
+          },
+          "placeholders": [
+            {
+              "name": "converted_count",
+              "type": "string",
+              "meaning": "converted_count: torchflowers changed to glowing blocks"
+            }
+          ],
+          "translations": {
+            "cs_CZ": {
+              "text": "§aÚvodní nastavení dokončeno. §fPočet rozsvícených okrasných zázvorů: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§aConfiguración inicial terminada. §fBastones de emperador activados: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§aConfiguración inicial terminada. §fAnflorchas activadas: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§aConfiguração inicial concluída. §fFlores-de-tocha ativadas: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§aConfiguração inicial concluída. §fPlantochas ativadas: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§aErsteinrichtung abgeschlossen. §fAktivierte Fackelblumen: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§aPremière configuration terminée. §fTorches-fleurs activées : %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§aPierwsza konfiguracja zakończona. §fAktywowane etlingery wyniosłe: %s.",
+              "based_on": "282ba5e782076c25fe2e894ebb8bbb279b29cf3954ed5b29c6bf78b280397a51",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "torchlight.message.setup.empty": {
+          "source": "§7First-time setup complete: no existing torchflowers found nearby.",
+          "context": {
+            "meaning": "One-time migration completed without finding existing torchflowers nearby.",
+            "location": "torchlight_rp: chat or action bar",
+            "trigger": "One-time migration completed without finding existing torchflowers nearby.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete sentence; address the player without assuming gender.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender.",
+            "source_paths": []
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "§7Úvodní nastavení dokončeno: v okolí nejsou žádné okrasné zázvory.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§7Configuración inicial terminada: no hay bastones de emperador cercanos.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§7Configuración inicial terminada: no hay anflorchas cercanas.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§7Configuração inicial concluída: não foram encontradas flores-de-tocha próximas.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§7Configuração inicial concluída: nenhuma plantocha encontrada por perto.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§7Ersteinrichtung abgeschlossen: keine Fackelblumen in der Nähe gefunden.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§7Première configuration terminée : aucune torche-fleur trouvée à proximité.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§7Pierwsza konfiguracja zakończona: brak etlinger wyniosłych w pobliżu.",
+              "based_on": "f3ad49482bd4dc11e0ec8e99e61d6f448195b1cd3ecb2868966a5b3a3cc0d8ce",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "pack.name": {
+          "source": "Torchlight — Resource Pack",
+          "context": {
+            "meaning": "Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.",
+            "location": "torchlight_rp: pack selection screen",
+            "trigger": "Shown when the player views or uses this content.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Pack title or a complete description; localize pack type and descriptive words.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Torchlight — Balíček zdrojů",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Torchlight — Paquete de recursos",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Torchlight — Paquete de recursos",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Torchlight — Pacote de recursos",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Torchlight — Pacote de recursos",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Torchlight — Ressourcenpaket",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Torchlight — Pack de ressources",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Torchlight — Pakiet zasobów",
+              "based_on": "440215b55457fc247c5f15b574635f886a39425679f55fac38bd2bd1898cc0fb",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "pack.description": {
+          "source": "Torchlight resource pack: glowing torchflower model, texture and text.",
+          "context": {
+            "meaning": "Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.",
+            "location": "torchlight_rp: pack selection screen",
+            "trigger": "Shown when the player views or uses this content.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Pack title or a complete description; localize pack type and descriptive words.",
+            "constraints": "Preserve namespace IDs, commands, coordinates, color codes, placeholder order and lore proper names. Action-bar labels must stay short; no assumed player gender."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Balíček zdrojů Torchlight: model, textura a texty svítícího okrasného zázvoru.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Paquete de recursos de Torchlight: modelo, textura y textos del bastón de emperador luminoso.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Paquete de recursos de Torchlight: modelo, textura y textos de la anflorcha luminosa.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Pacote de recursos de Torchlight: modelo, textura e textos da flor-de-tocha luminosa.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Pacote de recursos de Torchlight: modelo, textura e textos da plantocha luminosa.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Ressourcenpaket für Torchlight: Modell, Textur und Texte der leuchtenden Fackelblume.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Pack de ressources de Torchlight : modèle, texture et textes de la torche-fleur lumineuse.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Pakiet zasobów Torchlight: model, tekstura i teksty świecącej etlingery wyniosłej.",
+              "based_on": "b2cc2530c8ccde097efa11cce41958b8ec0d1a41ff40e16db7caa7bfa31d909c",
+              "status": "ai-draft"
+            }
+          }
+        }
+      }
+    }
+  },
+  "glossary": {
+    "torchflower": {
+      "meaning": "Vanilla torchflower replaced by a visually identical glowing custom block.",
+      "localized": {
+        "cs_CZ": "Zázvor okrasný",
+        "es_ES": "Bastón de emperador",
+        "es_MX": "Anflorcha",
+        "pt_PT": "Flor-de-Tocha",
+        "pt_BR": "Plantocha",
+        "de_DE": "Fackelblume",
+        "fr_FR": "Torche-fleur",
+        "pl_PL": "Etlingera wyniosła"
+      }
+    },
+    "scan": {
+      "meaning": "Sweep converts existing flowers; setup is the one-time migration, not continuous world scanning."
+    },
+    "vanilla_reference": {
+      "commit": "46ba6ea985fb5a92d79a9419198f10dda14c199d",
+      "url": "https://github.com/Mojang/bedrock-samples/tree/46ba6ea985fb5a92d79a9419198f10dda14c199d/resource_pack/texts",
+      "status": "Documented sample terminology, not checked in game. Installed extracted 1.26.52 .lang files are empty."
+    }
+  },
+  "style": {
+    "audience": "Minecraft players; concise UI and gentle woodland narrative where applicable.",
+    "address": "Czech respectful plural address; Spanish tú; Portuguese Portugal tu, Brazil você; German du; French tu; Polish ty. Avoid assuming player gender.",
+    "review": "AI draft, not independently language-reviewed or tested in game.",
+    "reference": "Locale list verified in installed 1.26.52 reference. Vanilla terminology checked against Mojang bedrock-samples commit 46ba6ea985fb5a92d79a9419198f10dda14c199d; sample terms documented, not checked in game."
+  }
+}
