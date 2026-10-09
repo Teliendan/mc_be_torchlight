@@ -13,8 +13,8 @@ them." — [Bedrock Wiki](https://wiki.bedrock.dev/blocks/blocks-intro)).
 
 The workaround: a visually identical **custom block** (`torchlight:torchflower`) that does emit
 light, reusing the real vanilla texture and a matching cross model. A script swaps the vanilla
-block for the glowing one the moment it appears, then gets out of the way — light propagation
-after that is handled entirely by the engine, at zero ongoing script cost.
+block for the glowing one the moment it appears. Light propagation is handled by the engine;
+scheduled block ticks and local piston events maintain the flower's support relationship.
 
 The **item** stays 100% vanilla. Dye, suspicious stew, sniffer drops, and trading are untouched;
 only the *placed block* changes, and breaking it drops a normal `minecraft:torchflower` item.
@@ -27,9 +27,13 @@ only the *placed block* changes, and breaking it drops a normal `minecraft:torch
 | Player-planted crop matures | The crop's position is remembered on placement; a 5s timer re-checks only that handful of tracked positions until it matures |
 | Already in the world / world-gen, first load | One-time automatic migration on first player spawn (sweeps a volume around them once, then never again) |
 | Torchflowers far from where the migration ran | Manual `/scriptevent torchlight:sweep` run near them |
+| Flower pushed by a piston or its original soil moved | Pops and drops one vanilla torchflower, even if another soil replaces its support |
 
 No continuous world scanning happens at any point — see `torchlight_bp/scripts/main.js` for the
 full design rationale in comments.
+
+Support rules, production test status and regression instructions are in
+[the support notes](docs/SUPPORT_AND_PISTONS.md).
 
 ## Install
 

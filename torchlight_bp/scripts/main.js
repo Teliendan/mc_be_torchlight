@@ -1,5 +1,6 @@
 import { message } from "./messages.js";
-import { world, system, BlockPermutation, ItemStack } from "@minecraft/server";
+import { world, system, BlockPermutation } from "@minecraft/server";
+import { createTorchflowerSupport, observePiston } from "./support.js";
 
 // ---------------------------------------------------------------------------
 // Glowing Torchflower
@@ -19,6 +20,16 @@ import { world, system, BlockPermutation, ItemStack } from "@minecraft/server";
 const VANILLA_FLOWER = "minecraft:torchflower";
 const VANILLA_CROP   = "minecraft:torchflower_crop";
 const GLOWING_FLOWER = "torchlight:torchflower";
+const flowerSupport = createTorchflowerSupport(system);
+
+system.beforeEvents.startup.subscribe(({ blockComponentRegistry }) => {
+    blockComponentRegistry.registerCustomComponent("torchlight:support", {
+        onPlace({ block }) { flowerSupport.observe(block, { reset: true }); },
+        onTick({ block }) { flowerSupport.observe(block); },
+        onBreak({ block }) { flowerSupport.invalidate(block.dimension, block.location); },
+    });
+});
+world.afterEvents.pistonActivate.subscribe((event) => observePiston(flowerSupport, event));
 
 const CROPS_PROP     = "torchlight:pending_crops";  // persisted across reloads
 const MIGRATED_PROP  = "torchlight:migrated_v1";    // one-time first-run migration flag
@@ -69,11 +80,13 @@ function trackCrop(loc, dimensionId) {
 
 function makeGlowing(block) {
     block.setPermutation(BlockPermutation.resolve(GLOWING_FLOWER));
+    flowerSupport.observe(block, { reset: true });
 }
 
 // 1) Player places a torchflower -> swap immediately.
 world.afterEvents.playerPlaceBlock.subscribe((e) => {
     const block = e.block;
+    flowerSupport.resetAround(block.dimension, block.location);
     if (block.typeId === VANILLA_FLOWER) {
         makeGlowing(block);
     } else if (block.typeId === VANILLA_CROP) {
@@ -117,18 +130,11 @@ system.runInterval(() => {
     if (changed) savePendingCrops(keep);
 }, CROP_CHECK_INTERVAL);
 
-// 3) Support break: vanilla plants pop off when the block beneath is removed.
-//    Custom blocks don't do this automatically, so replicate it event-cheaply.
+// 3) Explicit player edits establish a new relationship at neighbouring flowers.
+//    Native survival and the support service own removal and loot.
 world.afterEvents.playerBreakBlock.subscribe((e) => {
-    const { x, y, z } = e.block.location;
-    const above = e.dimension.getBlock({ x, y: y + 1, z });
-    if (above?.typeId === GLOWING_FLOWER) {
-        above.setPermutation(BlockPermutation.resolve("minecraft:air"));
-        e.dimension.spawnItem(
-            new ItemStack(VANILLA_FLOWER, 1),
-            { x: x + 0.5, y: y + 1.5, z: z + 0.5 }
-        );
-    }
+    flowerSupport.invalidate(e.dimension, e.block.location);
+    flowerSupport.resetAround(e.dimension, e.block.location);
 });
 
 // 4) Manual sweep for pre-existing / naturally generated torchflowers.
