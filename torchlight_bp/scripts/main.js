@@ -207,14 +207,14 @@ world.afterEvents.playerSpawn.subscribe((e) => {
     if (!e.initialSpawn) return;
     if (world.getDynamicProperty(MIGRATED_PROP) === true) return;
 
-    // Set the flag first so this can't run twice.
-    world.setDynamicProperty(MIGRATED_PROP, true);
-
+    if (sweepRunning) return;
     e.player.sendMessage(message("setup.start"));
     sweepAround(e.player, MIGRATE_RADIUS, MIGRATE_HEIGHT, "setup");
+    // Mark setup only after its message and background job have started.
+    world.setDynamicProperty(MIGRATED_PROP, true);
 });
 
 world.afterEvents.worldLoad.subscribe(() => {
     syncCropTimer(loadPendingCrops());
-    console.warn("[Torchlight] Glowing Torchflower active (light 14).");
+    console.log("[Torchlight] Glowing Torchflower active (light 14).");
 });
