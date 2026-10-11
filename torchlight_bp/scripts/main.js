@@ -25,7 +25,7 @@ const flowerSupport = createTorchflowerSupport(system);
 system.beforeEvents.startup.subscribe(({ blockComponentRegistry }) => {
     blockComponentRegistry.registerCustomComponent("torchlight:support", {
         onPlace({ block }) { flowerSupport.observe(block, { reset: true }); },
-        onTick({ block }) { flowerSupport.observe(block); },
+        onRandomTick({ block }) { flowerSupport.observe(block); },
         onBreak({ block }) { flowerSupport.invalidate(block.dimension, block.location); },
     });
 });
@@ -34,6 +34,12 @@ world.afterEvents.pistonActivate.subscribe((event) => observePiston(flowerSuppor
 const CROPS_PROP     = "torchlight:pending_crops";  // persisted across reloads
 const MIGRATED_PROP  = "torchlight:migrated_v1";    // one-time first-run migration flag
 const CROP_CHECK_INTERVAL = 100;                    // ticks (5s)
+let cropTimer;
+
+function syncCropTimer(list) {
+    if (list.length && cropTimer === undefined) cropTimer = system.runInterval(checkPendingCrops, CROP_CHECK_INTERVAL);
+    else if (!list.length && cropTimer !== undefined) { system.clearRun(cropTimer); cropTimer = undefined; }
+}
 
 // Manual sweep (/scriptevent torchlight:sweep)
 const SWEEP_RADIUS   = 32;
@@ -74,6 +80,7 @@ function trackCrop(loc, dimensionId) {
         list.push({ x: loc.x, y: loc.y, z: loc.z, d: dimensionId });
         savePendingCrops(list);
     }
+    syncCropTimer(list);
 }
 
 // --- the swap ---------------------------------------------------------------
@@ -97,9 +104,9 @@ world.afterEvents.playerPlaceBlock.subscribe((e) => {
 
 // 2) Slow timer: re-check ONLY the handful of tracked crop positions.
 //    This is not a world scan — it is a few getBlock calls every 5 seconds.
-system.runInterval(() => {
+function checkPendingCrops() {
     const list = loadPendingCrops();
-    if (list.length === 0) return;
+    if (list.length === 0) { syncCropTimer(list); return; }
 
     const keep = [];
     let changed = false;
@@ -128,11 +135,16 @@ system.runInterval(() => {
     }
 
     if (changed) savePendingCrops(keep);
-}, CROP_CHECK_INTERVAL);
+    syncCropTimer(keep);
+}
 
 // 3) Explicit player edits establish a new relationship at neighbouring flowers.
 //    Native survival and the support service own removal and loot.
 world.afterEvents.playerBreakBlock.subscribe((e) => {
+    flowerSupport.invalidate(e.dimension, e.block.location);
+    flowerSupport.resetAround(e.dimension, e.block.location);
+});
+world.afterEvents.blockExplode.subscribe((e) => {
     flowerSupport.invalidate(e.dimension, e.block.location);
     flowerSupport.resetAround(e.dimension, e.block.location);
 });
@@ -203,5 +215,6 @@ world.afterEvents.playerSpawn.subscribe((e) => {
 });
 
 world.afterEvents.worldLoad.subscribe(() => {
+    syncCropTimer(loadPendingCrops());
     console.warn("[Torchlight] Glowing Torchflower active (light 14).");
 });

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import "./crop_lifecycle.mjs";
 import { readFileSync } from "node:fs";
 
 const script = (name) => readFileSync(new URL(`../torchlight_bp/scripts/${name}`, import.meta.url), "utf8");
@@ -68,7 +69,7 @@ test("native own pop, floor filter and vanilla loot match the adapter", () => {
     assert.equal(definition["minecraft:movable"].movement_type, "popped");
     assert.deepEqual(definition["minecraft:placement_filter"].conditions[0].allowed_faces, ["up"]);
     assert.deepEqual(new Set(definition["minecraft:placement_filter"].conditions[0].block_filter), SOILS);
-    assert.equal(definition["minecraft:tick"].looping, true);
+    assert.equal(definition["minecraft:tick"], undefined, "flowers never schedule support polling");
     assert.ok(definition["torchlight:support"]);
     assert.equal(loot.pools.length, 1); assert.equal(loot.pools[0].rolls, 1);
     assert.equal(loot.pools[0].entries.length, 1);
@@ -79,6 +80,17 @@ test("original soil departure breaks once despite a valid replacement", () => {
     h.put(h.soil, "minecraft:moving_block"); h.event();
     h.put(h.soil, "minecraft:grass_block"); h.advance();
     assert.equal(h.drops.length, 1); assert.equal(h.drops[0].item, "minecraft:torchflower");
+});
+test("a reloaded flower is discovered by the first piston, without warming", () => {
+    const h = harness();
+    h.put(h.soil, "minecraft:moving_block"); h.event();
+    h.put(h.soil, "minecraft:dirt"); h.advance();
+    assert.equal(h.drops.length, 1);
+});
+test("a cold flower loses invalid soil through an edit event", () => {
+    const h = harness(); h.put(h.soil, "minecraft:stone");
+    h.support.resetAround(h.dimension, h.soil);
+    assert.equal(h.drops.length, 1);
 });
 test("tick before piston event preserves original support history", () => {
     const h = harness(); h.observe();
@@ -111,7 +123,7 @@ test("ordinary support edits do not leak old history into later pistons", () => 
     h.put(h.soil, "minecraft:grass_block"); h.support.resetAround(h.dimension, h.soil);
     h.event(); h.advance(); assert.equal(h.drops.length, 0);
 });
-test("periodic loaded-flower recovery checks actual soil eligibility", () => {
+test("sparse random-tick recovery checks actual soil eligibility", () => {
     const h = harness(); h.put(h.soil, "minecraft:stone"); h.observe();
     assert.equal(h.drops.length, 1);
 });
