@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "exceptions": [
+    {
+      "rule": "plant.bone_meal_missing",
+      "path": "bp",
+      "subject": "torchlight:torchflower",
+      "reason": "Owner 2026-10-13: match mature vanilla torchflower, which cannot reproduce with bone meal. Vanilla torchflower_crop remains native and bone-mealable; no custom handler is needed. Official Bedrock 1.20.0.23 changelog, rechecked against 26.50/26.52 notes.",
+      "evidence": "docs/VERIFIER_WARNINGS.md"
+    }
+  ]
+}
