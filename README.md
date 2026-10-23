@@ -13,7 +13,8 @@ them." — [Bedrock Wiki](https://wiki.bedrock.dev/blocks/blocks-intro)).
 
 The workaround: a visually identical **custom block** (`torchlight:torchflower`) that does emit
 light, reusing the real vanilla texture and a matching cross model. A script swaps the vanilla
-block for the glowing one the moment it appears. Light propagation is handled by the engine;
+block for the glowing one on player placement or after registered crop maturity is detected.
+Light propagation is handled by the engine;
 scheduled block ticks and local piston events maintain the flower's support relationship.
 
 The **item** stays 100% vanilla. Dye, suspicious stew, sniffer drops, and trading are untouched;
@@ -25,6 +26,7 @@ only the *placed block* changes, and breaking it drops a normal `minecraft:torch
 |---|---|
 | Player places the flower item | `playerPlaceBlock` event → instant swap |
 | Player-planted crop matures | The crop's position is remembered on placement; a 5s timer re-checks only that handful of tracked positions until it matures |
+| Farmer-planted or pre-existing growing crops | Existing setup/manual sweep registers the crops; the same checker then converts them at maturity. New unregistered plantings need another sweep |
 | Already in the world / world-gen, first load | One-time automatic migration on first player spawn (sweeps a volume around them once, then never again) |
 | Torchflowers far from where the migration ran | Manual `/scriptevent torchlight:sweep` run near them |
 | Flower pushed by a piston or its original soil moved | Pops and drops one vanilla torchflower, even if another soil replaces its support |
@@ -92,10 +94,22 @@ it to fall back to resolving the vanilla path through the resource pack stack.
 
 ## Known limitations
 
-- The glowing block has a different identifier than `minecraft:torchflower`, so it will not fit in
-  a flower pot (vanilla flower pots only accept a fixed vanilla block list).
+Optional [seed override compatibility test](docs/SEED_OVERRIDE_TEST.md): enable
+**Torchlight — Seed Override Test** alongside the normal pack to test vanilla
+seed redirection for players and farmers. For this test a seed should place a
+grown glowing flower immediately. Disable the optional pack afterward. This
+does not yet implement the proposed custom growing crop or remove the core
+crop checker; native compatibility needs a game result first.
+
+- Normal potting uses the retained vanilla torchflower item and leaves a native potted plant;
+  this pack does not make that pot glow. The separately obtained custom block item has no
+  pot marker. Stable custom pot support exists; see the [interaction inspection](docs/PARITY_INSPECTION.md)
+  for the distinction and pending game checks.
 - Migration on first load only sweeps a volume around the spawning player; distant bases need a
   manual `/scriptevent torchlight:sweep` run nearby.
+- Stable API2.8 supplies no native farmer-planting/growth callback. Sweep while the farm is
+  growing to register its crops; automatic maturity checks then survive reloads. No periodic
+  farmer/world scan is added. Previously completed one-time setup does not rerun on update.
 
 ## Localization
 

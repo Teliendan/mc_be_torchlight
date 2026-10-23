@@ -14,7 +14,8 @@ import { createTorchflowerSupport, observePiston } from "./support.js";
 //   1. Flower placed by a player      -> playerPlaceBlock event (free)
 //   2. Crop planted by a player       -> remember that ONE position, re-check it
 //                                        on a slow timer until it matures
-//   3. Pre-existing / world-gen ones  -> manual /scriptevent torchlight:sweep
+//   3. Other flowers/growing crops   -> existing migration or manual sweep;
+//                                      discovered crops join the same registry
 // ---------------------------------------------------------------------------
 
 const VANILLA_FLOWER = "minecraft:torchflower";
@@ -34,6 +35,7 @@ world.afterEvents.pistonActivate.subscribe((event) => observePiston(flowerSuppor
 const CROPS_PROP     = "torchlight:pending_crops";  // persisted across reloads
 const MIGRATED_PROP  = "torchlight:migrated_v1";    // one-time first-run migration flag
 const CROP_CHECK_INTERVAL = 100;                    // ticks (5s)
+const CROP_DISCOVERY_BATCH = 32;                    // bounded persistence batches
 let cropTimer;
 
 function syncCropTimer(list) {
@@ -72,14 +74,25 @@ function savePendingCrops(list) {
 }
 
 function trackCrop(loc, dimensionId) {
+    trackCrops([loc], dimensionId);
+}
+
+function trackCrops(positions, dimensionId) {
+    if (!positions.length) return;
+    // A sweep yields between blocks. Merge against current persisted state so
+    // player placements and the crop checker cannot be overwritten by a stale
+    // snapshot taken when the job began.
     const list = loadPendingCrops();
-    const already = list.some(
-        (c) => c.x === loc.x && c.y === loc.y && c.z === loc.z && c.d === dimensionId
-    );
-    if (!already) {
+    const keys = new Set(list.map((c) => `${c.d}|${c.x},${c.y},${c.z}`));
+    let changed = false;
+    for (const loc of positions) {
+        const key = `${dimensionId}|${loc.x},${loc.y},${loc.z}`;
+        if (keys.has(key)) continue;
+        keys.add(key);
         list.push({ x: loc.x, y: loc.y, z: loc.z, d: dimensionId });
-        savePendingCrops(list);
+        changed = true;
     }
+    if (changed) savePendingCrops(list);
     syncCropTimer(list);
 }
 
@@ -149,9 +162,9 @@ world.afterEvents.blockExplode.subscribe((e) => {
     flowerSupport.resetAround(e.dimension, e.block.location);
 });
 
-// 4) Manual sweep for pre-existing / naturally generated torchflowers.
-//    Uses system.runJob so the volume walk is spread across ticks and can never
-//    hang the tick or trip the script watchdog.
+// 4) Existing finite sweep also discovers growing crops, regardless of planter.
+//    Uses system.runJob and yields between reads so the engine can spread the
+//    finite volume walk across ticks.
 function sweepAround(player, radius, height, label) {
     if (sweepRunning) {
         player.sendMessage(message("sweep.busy"));
@@ -164,6 +177,8 @@ function sweepAround(player, radius, height, label) {
     const ox = Math.floor(o.x), oy = Math.floor(o.y), oz = Math.floor(o.z);
 
     let converted = 0;
+    let growing = 0;
+    let discoveredCrops = [];
 
     system.runJob(function* () {
         for (let dx = -radius; dx <= radius; dx++) {
@@ -178,17 +193,23 @@ function sweepAround(player, radius, height, label) {
                     if (block?.typeId === VANILLA_FLOWER) {
                         makeGlowing(block);
                         converted++;
+                    } else if (block?.typeId === VANILLA_CROP) {
+                        growing++;
+                        discoveredCrops.push({ ...block.location });
+                        if (discoveredCrops.length === CROP_DISCOVERY_BATCH) {
+                            trackCrops(discoveredCrops, dim.id);
+                            discoveredCrops = [];
+                        }
                     }
                     yield; // hand control back to the game each block
                 }
             }
         }
+        trackCrops(discoveredCrops, dim.id);
         sweepRunning = false;
-        player.sendMessage(
-            converted > 0
-                ? message(`${label}.complete`, converted)
-                : message(`${label}.empty`)
-        );
+        if (converted > 0) player.sendMessage(message(`${label}.complete`, converted));
+        else if (growing === 0) player.sendMessage(message(`${label}.empty`));
+        if (growing > 0) player.sendMessage(message("crops.tracked", growing));
     }());
 }
 

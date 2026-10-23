@@ -19,3 +19,5 @@ torchlight.message.setup.empty=§7Úvodní nastavení dokončeno: v okolí nejso
 pack.name=Torchlight — Balíček zdrojů
 ## Context: Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.
 pack.description=Balíček zdrojů Torchlight: model, textura a texty svítícího okrasného zázvoru.
+## Context: A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.
+torchlight.message.crops.tracked=§7Zaregistrované rostoucí zázvory okrasné: %s. Po dozrání budou svítit.

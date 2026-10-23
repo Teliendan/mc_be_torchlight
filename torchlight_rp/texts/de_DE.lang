@@ -19,3 +19,5 @@ torchlight.message.setup.empty=§7Ersteinrichtung abgeschlossen: keine Fackelblu
 pack.name=Torchlight — Ressourcenpaket
 ## Context: Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.
 pack.description=Ressourcenpaket für Torchlight: Modell, Textur und Texte der leuchtenden Fackelblume.
+## Context: A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.
+torchlight.message.crops.tracked=§7Erfasste wachsende Fackelblumen: %s. Sie leuchten, sobald sie ausgewachsen sind.

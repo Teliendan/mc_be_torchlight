@@ -19,3 +19,5 @@ torchlight.message.setup.empty=§7Configuração inicial concluída: não foram 
 pack.name=Torchlight — Pacote de recursos
 ## Context: Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.
 pack.description=Pacote de recursos de Torchlight: modelo, textura e textos da flor-de-tocha luminosa.
+## Context: A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.
+torchlight.message.crops.tracked=§7Flores-de-Tocha em crescimento registadas: %s. Vão brilhar quando amadurecerem.

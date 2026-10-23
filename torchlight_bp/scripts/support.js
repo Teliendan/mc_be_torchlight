@@ -5,6 +5,7 @@ export const SOILS = new Set([
     "minecraft:grass_block", "minecraft:dirt", "minecraft:coarse_dirt",
     "minecraft:podzol", "minecraft:dirt_with_roots", "minecraft:moss_block",
     "minecraft:mud", "minecraft:farmland",
+    "minecraft:mycelium", "minecraft:muddy_mangrove_roots",
 ]);
 
 // Head directions measured by the revision-8 probe on Bedrock 1.26.52.

@@ -8,7 +8,10 @@
             }
         },
         "components": {
-          "minecraft:flammable": false,
+          "minecraft:flammable": {
+              "catch_chance_modifier": 30,
+              "destroy_chance_modifier": 100
+          },
           "minecraft:liquid_detection": {"detection_rules": [{"liquid_type": "water", "can_contain_liquid": false, "on_liquid_touches": "popped"}]},
           "minecraft:light_dampening": 0,
             "minecraft:light_emission": 14,
@@ -41,7 +44,8 @@
                         "minecraft:grass_block", "minecraft:dirt",
                         "minecraft:coarse_dirt", "minecraft:podzol",
                         "minecraft:dirt_with_roots", "minecraft:moss_block",
-                        "minecraft:mud", "minecraft:farmland"
+                        "minecraft:mud", "minecraft:farmland",
+                        "minecraft:mycelium", "minecraft:muddy_mangrove_roots"
                     ]
                 }]
             },

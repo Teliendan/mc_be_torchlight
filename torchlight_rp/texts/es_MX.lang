@@ -19,3 +19,5 @@ torchlight.message.setup.empty=§7Configuración inicial terminada: no hay anflo
 pack.name=Torchlight — Paquete de recursos
 ## Context: Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.
 pack.description=Paquete de recursos de Torchlight: modelo, textura y textos de la anflorcha luminosa.
+## Context: A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.
+torchlight.message.crops.tracked=§7Anflorchas en crecimiento registradas: %s. Brillarán cuando maduren.

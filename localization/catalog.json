@@ -693,6 +693,182 @@
               "status": "ai-draft"
             }
           }
+        },
+        "torchlight.message.crops.tracked": {
+          "source": "§7Growing torchflowers registered: %s. They will glow when mature.",
+          "context": {
+            "meaning": "A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.",
+            "location": "torchlight_rp: player chat after sweep or initial setup",
+            "trigger": "The completed sweep discovered one or more growing torchflower crops, regardless of who planted them.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Count label followed by a complete sentence; avoid count-dependent plural forms.",
+            "constraints": "Preserve section-sign7 and one sequential %s numeric count. Use the pinned Bedrock flower name. No player gender assumptions.",
+            "source_paths": [
+              "torchlight_bp/scripts/main.js"
+            ]
+          },
+          "placeholders": [
+            {
+              "name": "growing_crops",
+              "meaning": "Number of growing torchflower crops found in the completed finite sweep.",
+              "type": "integer"
+            }
+          ],
+          "translations": {
+            "cs_CZ": {
+              "text": "§7Zaregistrované rostoucí zázvory okrasné: %s. Po dozrání budou svítit.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "§7Bastones de emperador en crecimiento registrados: %s. Brillarán cuando maduren.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "§7Anflorchas en crecimiento registradas: %s. Brillarán cuando maduren.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "§7Flores-de-Tocha em crescimento registadas: %s. Vão brilhar quando amadurecerem.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "§7Plantochas em crescimento registradas: %s. Vão brilhar quando amadurecerem.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "§7Erfasste wachsende Fackelblumen: %s. Sie leuchten, sobald sie ausgewachsen sind.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "§7Torches-fleurs en croissance enregistrées : %s. Elles brilleront à maturité.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "§7Zarejestrowane rosnące etlingery wyniosłe: %s. Będą świecić, gdy dojrzeją.",
+              "based_on": "d7558ddce8e91b50deff5f221845da3767fccaa8b4774c375a3b5aa779e7115c",
+              "status": "ai-draft"
+            }
+          }
+        }
+      }
+    },
+    "torchlight_seed_probe_bp": {
+      "kind": "behavior",
+      "entries": {
+        "pack.name": {
+          "source": "Torchlight — Seed Override Test",
+          "context": {
+            "meaning": "Title of the optional vanilla-seed override compatibility test. Keep the Torchlight brand.",
+            "location": "torchlight_seed_probe_bp: world behavior-pack selection screen",
+            "trigger": "Viewing or enabling the optional seed override test pack.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Standalone pack title.",
+            "constraints": "Preserve Torchlight brand in the title; explain immediate flowering and optional nature. No experimental toggles are required."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Torchlight — Test přesměrování semen",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Torchlight — Prueba de semillas",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Torchlight — Prueba de semillas",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Torchlight — Teste de sementes",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Torchlight — Teste de sementes",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Torchlight — Samentest",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Torchlight — Test des graines",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Torchlight — Test nasion",
+              "based_on": "819dd148221e983ea1a43239b4eb14f0a54fc8d525ea2d1069df4741fb94d28a",
+              "status": "ai-draft"
+            }
+          }
+        },
+        "pack.description": {
+          "source": "Optional test: planting torchflower seeds makes a glowing flower immediately. Disable after testing.",
+          "context": {
+            "meaning": "Optional compatibility test, not normal crop growth. The original torchflower seed item is redirected to the existing fully grown glowing custom flower so player and farmer planting can be checked visually. Disable this optional pack after the test.",
+            "location": "torchlight_seed_probe_bp: world behavior-pack selection screen",
+            "trigger": "Viewing or enabling the optional seed override test pack.",
+            "tone": "Clear Minecraft UI",
+            "grammar": "Complete explanation followed by instruction; no player gender assumptions.",
+            "constraints": "Preserve Torchlight brand in the title; explain immediate flowering and optional nature. No experimental toggles are required."
+          },
+          "placeholders": [],
+          "translations": {
+            "cs_CZ": {
+              "text": "Volitelný test: zasazením semen zázvoru okrasného ihned vznikne svítící květina. Po testu vypněte.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "es_ES": {
+              "text": "Prueba opcional: al plantar semillas de bastón de emperador aparece una flor luminosa al instante. Desactívala al terminar.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "es_MX": {
+              "text": "Prueba opcional: al plantar semillas de anflorcha aparece una flor luminosa al instante. Desactívala al terminar.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "pt_PT": {
+              "text": "Teste opcional: plantar sementes de Flor-de-Tocha cria uma flor luminosa de imediato. Desativa após o teste.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "pt_BR": {
+              "text": "Teste opcional: plantar sementes de plantocha cria uma flor luminosa imediatamente. Desative após o teste.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "de_DE": {
+              "text": "Optionaler Test: Beim Pflanzen von Fackelblumensamen entsteht sofort eine leuchtende Blume. Nach dem Test deaktivieren.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "fr_FR": {
+              "text": "Test facultatif : planter des graines de torche-fleur crée immédiatement une fleur lumineuse. À désactiver après le test.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            },
+            "pl_PL": {
+              "text": "Opcjonalny test: posadzenie nasion etlingery wyniosłej od razu tworzy świecący kwiat. Wyłącz po teście.",
+              "based_on": "8b3f7273e75f6328361fd6abd436faf061441f65d11c3a61fe503d00ff73a451",
+              "status": "ai-draft"
+            }
+          }
         }
       }
     }

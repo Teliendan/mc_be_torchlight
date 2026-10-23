@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "suites": {
+    "crops": ["crop_lifecycle.mjs"],
+    "soils": ["flower_soils.mjs"],
+    "support": ["support_motion.mjs"],
+    "seed-override": ["seed_override.mjs"],
+    "suite-layout": ["suite_layout.mjs"]
+  },
+  "support_files": {}
+}

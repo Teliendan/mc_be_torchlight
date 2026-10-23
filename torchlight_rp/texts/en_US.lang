@@ -19,3 +19,5 @@ torchlight.message.setup.empty=§7First-time setup complete: no existing torchfl
 pack.name=Torchlight — Resource Pack
 ## Context: Pack title or description for torchlight_rp. BP means behavior pack; RP means resource pack. Keep mod brands unchanged.
 pack.description=Torchlight resource pack: glowing torchflower model, texture and text.
+## Context: A finite sweep or initial setup found growing native torchflower crops and registered their positions for automatic light conversion at maturity. No crop is advanced or harvested.
+torchlight.message.crops.tracked=§7Growing torchflowers registered: %s. They will glow when mature.

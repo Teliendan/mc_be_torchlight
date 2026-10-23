@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 
 let serial = 0;
 async function harness(initial = []) {
-    const callbacks = new Map(), timers = new Map(), cells = new Map(), props = new Map();
+    const callbacks = new Map(), timers = new Map(), cells = new Map(), props = new Map(), jobs = [];
     props.set("torchlight:pending_crops", JSON.stringify(initial));
     let ready = false, writes = 0, nextTimer = 0;
     const events = new Proxy({}, { get: (_, name) => ({ subscribe(fn) {
@@ -16,10 +16,11 @@ async function harness(initial = []) {
     const world = { afterEvents: events, getDimension: () => dimension,
         getDynamicProperty(name) { assert.ok(ready,"world reads deferred until worldLoad"); return props.get(name); },
         setDynamicProperty(name,value) { writes++; props.set(name,value); } };
-    const system = { beforeEvents: { startup: { subscribe() {} } }, afterEvents: { scriptEventReceive: { subscribe() {} } },
+    const system = { beforeEvents: { startup: { subscribe() {} } }, afterEvents: events,
+        runJob(generator) { jobs.push(generator); },
         runInterval(fn,ticks) { const id=++nextTimer; timers.set(id,{fn,ticks}); return id; },
         clearRun: id => timers.delete(id) };
-    globalThis.__cropLifecycle = { world, system, message: () => "", observePiston() {},
+    globalThis.__cropLifecycle = { world, system, message: (...args) => args, observePiston() {},
         createTorchflowerSupport: () => ({ observe() {}, resetAround() {}, invalidate() {} }),
         BlockPermutation: { resolve: typeId => ({ typeId }) } };
     const source = readFileSync(new URL("../torchlight_bp/scripts/main.js", import.meta.url), "utf8")
@@ -32,7 +33,12 @@ async function harness(initial = []) {
         const block={location:{x,y:0,z:0},typeId,dimension,setPermutation(p) { this.typeId=p.typeId; }};
         cells.set(key(block.location),block); return block;
     };
-    return { timers, fire, put, props, cells, get writes() { return writes; },
+    const messages = [];
+    const player = {dimension, location:{x:0,y:0,z:0},sendMessage(m){messages.push(m);}};
+    return { timers, fire, put, props, cells, jobs, messages, player, get writes() { return writes; },
+        sweep() { fire("scriptEventReceive",{id:"torchlight:sweep",sourceEntity:player}); },
+        stepJob() { if(jobs[0]?.next().done) jobs.shift(); },
+        finishJob() { let steps=0; while(jobs.length) { assert.ok(++steps < 500000); this.stepJob(); } },
         check() { for (const {fn,ticks} of [...timers.values()]) { assert.equal(ticks,100); fn(); } } };
 }
 
@@ -60,3 +66,47 @@ async function harness(initial = []) {
     assert.deepEqual(JSON.parse(h.props.get("torchlight:pending_crops")),[]);
 }
 console.log("PASS production crop timer: idle, deduplication, maturity, unloaded retention and restart");
+
+{
+    const h=await harness();
+    const crop=h.put(0,"minecraft:torchflower_crop");
+    h.put(1,"minecraft:wheat");
+    h.sweep(); h.finishJob();
+    assert.equal(h.timers.size,1,"manual sweep enrolls native growing crops without a player placement");
+    assert.deepEqual(JSON.parse(h.props.get("torchlight:pending_crops")),[{x:0,y:0,z:0,d:"overworld"}]);
+    assert.ok(h.messages.some(m=>m[0]==="crops.tracked" && m[1]===1));
+    assert.ok(!h.messages.some(m=>m[0]==="sweep.empty"),"finding crops must not report an empty sweep");
+    const writes=h.writes;
+    h.sweep(); h.finishJob(); assert.equal(h.writes,writes,"repeat sweep deduplicates growing crops");
+    crop.typeId="minecraft:torchflower"; h.check();
+    assert.equal(crop.typeId,"torchlight:torchflower"); assert.equal(h.timers.size,0);
+    assert.equal(h.cells.get("1,0,0").typeId,"minecraft:wheat","other crops remain native and untracked");
+}
+{
+    const h=await harness(); h.put(0,"minecraft:torchflower_crop");
+    h.fire("playerSpawn",{initialSpawn:true,player:h.player}); h.finishJob();
+    assert.equal(h.props.get("torchlight:migrated_v1"),true);
+    assert.equal(h.timers.size,1,"one-time migration enrolls immature pre-existing crops");
+    h.fire("playerSpawn",{initialSpawn:true,player:h.player}); assert.equal(h.jobs.length,0);
+    h.put(0,"minecraft:torchflower"); h.check(); assert.equal(h.timers.size,0);
+}
+{
+    const h=await harness();
+    for(let x=-32;x<=2;x++) h.put(x,"minecraft:torchflower_crop");
+    h.sweep();
+    let steps=0;
+    while(h.writes===0) { assert.ok(++steps<150000); h.stepJob(); }
+    assert.equal(JSON.parse(h.props.get("torchlight:pending_crops")).length,32,"first discovery flush is bounded to32");
+    const playerCrop=h.put(100,"minecraft:torchflower_crop");
+    h.fire("playerPlaceBlock",{block:playerCrop});
+    const earlyMature=h.put(-32,"minecraft:torchflower"); h.check();
+    assert.equal(earlyMature.typeId,"torchlight:torchflower");
+    h.finishJob();
+    const list=JSON.parse(h.props.get("torchlight:pending_crops"));
+    assert.equal(list.length,35);
+    assert.ok(list.some(c=>c.x===100),"yielded sweep preserves concurrent player registration");
+    assert.ok(!list.some(c=>c.x===-32),"final flush does not resurrect a crop already converted by timer");
+    assert.equal(h.writes,4,"two sweep batches plus concurrent player registration and maturity");
+    assert.equal(h.jobs.length,0,"discovery job finishes; no recurring world scan");
+}
+console.log("PASS native crop discovery: manual/migration enrollment, deduplication, maturity and concurrent batched merge");

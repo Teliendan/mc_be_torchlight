@@ -6,7 +6,8 @@ Target: Bedrock 1.26.52 / stable Script API 2.8.0.
 
 Flowers pop when pushed by a piston or when their original soil moves, even
 if another valid soil replaces it. Native floor support accepts grass, dirt,
-coarse dirt, podzol, rooted dirt (`dirt_with_roots`), moss, mud and farmland.
+coarse dirt, podzol, rooted dirt (`dirt_with_roots`), moss, mud, farmland,
+mycelium and muddy mangrove roots (the last two corrected2026-10-21).
 Native destruction drops one vanilla torchflower. Placement and conversions
 warm support records immediately; sparse random ticks recover loaded flowers
 without world scans. Player edits reset local history; unavailable chunks and
@@ -19,6 +20,12 @@ pre-event tick ordering, an unrelated nearby flower, duplicate piston jobs,
 native own popping, ordinary edit history and reload recovery. Run
 `node mods/torchlight/tests/run.mjs` from the workspace, or
 `.\mods verify torchlight` to include the shared verifier.
+
+Group19 also adds an independently specified10-soil runner that tests the
+production support service and rejects stone/sand. Named suites: support,
+soils, crops and suite-layout. Pale moss remains a target-version placement
+question because specific-flower and family references differ; no guessed
+extra substrate was added.
 
 The underlying revision-8 probe passed 18/18 in the owner's game. This flower's
 production integration and loot are checked offline; separate in-game results
