@@ -26,7 +26,7 @@ only the *placed block* changes, and breaking it drops a normal `minecraft:torch
 |---|---|
 | Player places the flower item | `playerPlaceBlock` event → instant swap |
 | Player-planted crop matures | The crop's position is remembered on placement; a 5s timer re-checks only that handful of tracked positions until it matures |
-| Farmer-planted or pre-existing growing crops | Existing setup/manual sweep registers the crops; the same checker then converts them at maturity. New unregistered plantings need another sweep |
+| Pre-existing or farmer-planted growing crops | Setup/manual sweep registers the crops; the same checker then converts them at maturity. Later plantings need another sweep |
 | Already in the world / world-gen, first load | One-time automatic migration on first player spawn (sweeps a volume around them once, then never again) |
 | Torchflowers far from where the migration ran | Manual `/scriptevent torchlight:sweep` run near them |
 | Flower pushed by a piston or its original soil moved | Pops and drops one vanilla torchflower, even if another soil replaces its support |
@@ -94,22 +94,14 @@ it to fall back to resolving the vanilla path through the resource pack stack.
 
 ## Known limitations
 
-Optional [seed override compatibility test](docs/SEED_OVERRIDE_TEST.md): enable
-**Torchlight — Seed Override Test** alongside the normal pack to test vanilla
-seed redirection for players and farmers. For this test a seed should place a
-grown glowing flower immediately. Disable the optional pack afterward. This
-does not yet implement the proposed custom growing crop or remove the core
-crop checker; native compatibility needs a game result first.
-
 - Normal potting uses the retained vanilla torchflower item and leaves a native potted plant;
   this pack does not make that pot glow. The separately obtained custom block item has no
-  pot marker. Stable custom pot support exists; see the [interaction inspection](docs/PARITY_INSPECTION.md)
+  pot marker. Stable custom pot support exists; see the [parity notes](docs/VANILLA_PARITY.md)
   for the distinction and pending game checks.
 - Migration on first load only sweeps a volume around the spawning player; distant bases need a
   manual `/scriptevent torchlight:sweep` run nearby.
-- Stable API2.8 supplies no native farmer-planting/growth callback. Sweep while the farm is
-  growing to register its crops; automatic maturity checks then survive reloads. No periodic
-  farmer/world scan is added. Previously completed one-time setup does not rerun on update.
+- Torchflowers planted by vanilla farmers (only possible if a player gave them seeds) stay unlit
+  until `/scriptevent torchlight:sweep` is run nearby. The one-time setup does not rerun on update.
 
 ## Localization
 

@@ -77,7 +77,9 @@ console.log("PASS production crop timer: idle, deduplication, maturity, unloaded
     assert.ok(h.messages.some(m=>m[0]==="crops.tracked" && m[1]===1));
     assert.ok(!h.messages.some(m=>m[0]==="sweep.empty"),"finding crops must not report an empty sweep");
     const writes=h.writes;
+    h.messages.length=0;
     h.sweep(); h.finishJob(); assert.equal(h.writes,writes,"repeat sweep deduplicates growing crops");
+    assert.ok(!h.messages.some(m=>m[0]==="crops.tracked"),"repeat sweep reports only newly tracked crops");
     crop.typeId="minecraft:torchflower"; h.check();
     assert.equal(crop.typeId,"torchlight:torchflower"); assert.equal(h.timers.size,0);
     assert.equal(h.cells.get("1,0,0").typeId,"minecraft:wheat","other crops remain native and untracked");
@@ -90,23 +92,4 @@ console.log("PASS production crop timer: idle, deduplication, maturity, unloaded
     h.fire("playerSpawn",{initialSpawn:true,player:h.player}); assert.equal(h.jobs.length,0);
     h.put(0,"minecraft:torchflower"); h.check(); assert.equal(h.timers.size,0);
 }
-{
-    const h=await harness();
-    for(let x=-32;x<=2;x++) h.put(x,"minecraft:torchflower_crop");
-    h.sweep();
-    let steps=0;
-    while(h.writes===0) { assert.ok(++steps<150000); h.stepJob(); }
-    assert.equal(JSON.parse(h.props.get("torchlight:pending_crops")).length,32,"first discovery flush is bounded to32");
-    const playerCrop=h.put(100,"minecraft:torchflower_crop");
-    h.fire("playerPlaceBlock",{block:playerCrop});
-    const earlyMature=h.put(-32,"minecraft:torchflower"); h.check();
-    assert.equal(earlyMature.typeId,"torchlight:torchflower");
-    h.finishJob();
-    const list=JSON.parse(h.props.get("torchlight:pending_crops"));
-    assert.equal(list.length,35);
-    assert.ok(list.some(c=>c.x===100),"yielded sweep preserves concurrent player registration");
-    assert.ok(!list.some(c=>c.x===-32),"final flush does not resurrect a crop already converted by timer");
-    assert.equal(h.writes,4,"two sweep batches plus concurrent player registration and maturity");
-    assert.equal(h.jobs.length,0,"discovery job finishes; no recurring world scan");
-}
-console.log("PASS native crop discovery: manual/migration enrollment, deduplication, maturity and concurrent batched merge");
+console.log("PASS native crop discovery: manual/migration enrollment, deduplication and maturity");

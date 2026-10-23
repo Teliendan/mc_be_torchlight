@@ -15,34 +15,14 @@ moving blocks remain unknown. The shared observer is
 `scripts/support_motion_service.js`, maintained with Lothlorien's matching
 script; `scripts/support.js` supplies the flower's support and loot rules.
 
-Eleven offline regressions cover flower configuration, valid replacement,
-pre-event tick ordering, an unrelated nearby flower, duplicate piston jobs,
-native own popping, ordinary edit history and reload recovery. Run
-`node mods/torchlight/tests/run.mjs` from the workspace, or
-`.\mods verify torchlight` to include the shared verifier.
+Offline regressions cover flower configuration, valid replacement, pre-event tick ordering, an unrelated nearby
+flower, duplicate piston jobs, native popping, edit history and reload recovery, plus a ten-soil check that rejects
+stone/sand. Run `.\mods verify torchlight` (includes `tests/run.mjs`). Pale moss is a target-version placement
+question; no guessed extra substrate was added.
 
-Group19 also adds an independently specified10-soil runner that tests the
-production support service and rejects stone/sand. Named suites: support,
-soils, crops and suite-layout. Pale moss remains a target-version placement
-question because specific-flower and family references differ; no guessed
-extra substrate was added.
+Design rule (owner, 2026-10-11): no looping per-block timers. Piston events discover cold flowers, edit/explosion
+events discover immediate neighbours, and native `onRandomTick` is an eventual fallback for commands, reloads and
+timeouts (no recovery at randomTickSpeed 0). Removing the old [2,2] timer removed the reported game lag.
 
-The underlying revision-8 probe passed 18/18 in the owner's game. This flower's
-production integration and loot are checked offline; separate in-game results
-for rapid/concurrent pistons and chunk reloads have not been recorded.
-
-Performance correction, 2026-10-11 (1.26.52 / API 2.8.0): removed the flower's
-looping [2,2] timer and support `onTick`. Piston events discover cold flowers
-even with moving soil; edit/explosion events discover immediate neighbours.
-Native `onRandomTick` is an eventual safety fallback for commands, reloads and
-timeouts, with no fixed deadline and no recovery at randomTickSpeed 0. The
-separate five-second pending-crop maturation timer remains. Cold discovery and
-cold soil edits pass offline regressions; specific engine cases remain pending.
-
-Owner follow-up, 2026-10-11: the piston-support correction alone removed the
-reported game lag. This is qualitative confirmation for the deployed combined
-setup, not an independent Torchlight benchmark or verification of every flower
-loot/motion case. Do not attribute it to the later crop timer change. Avoid
-permanent fast support polling per block; use native survival, bounded local
-event work and the cheapest correct fallback. The reusable guidance is in
-workspace docs/bedrock-script-performance.md.
+Not yet checked in game: rapid/concurrent pistons and chunk reloads. Reusable guidance: workspace
+docs/bedrock-script-performance.md.

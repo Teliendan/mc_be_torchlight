@@ -35,7 +35,6 @@ world.afterEvents.pistonActivate.subscribe((event) => observePiston(flowerSuppor
 const CROPS_PROP     = "torchlight:pending_crops";  // persisted across reloads
 const MIGRATED_PROP  = "torchlight:migrated_v1";    // one-time first-run migration flag
 const CROP_CHECK_INTERVAL = 100;                    // ticks (5s)
-const CROP_DISCOVERY_BATCH = 32;                    // bounded persistence batches
 let cropTimer;
 
 function syncCropTimer(list) {
@@ -77,23 +76,25 @@ function trackCrop(loc, dimensionId) {
     trackCrops([loc], dimensionId);
 }
 
+/** Adds positions not yet tracked; returns how many were new. */
 function trackCrops(positions, dimensionId) {
-    if (!positions.length) return;
+    if (!positions.length) return 0;
     // A sweep yields between blocks. Merge against current persisted state so
     // player placements and the crop checker cannot be overwritten by a stale
     // snapshot taken when the job began.
     const list = loadPendingCrops();
     const keys = new Set(list.map((c) => `${c.d}|${c.x},${c.y},${c.z}`));
-    let changed = false;
+    let added = 0;
     for (const loc of positions) {
         const key = `${dimensionId}|${loc.x},${loc.y},${loc.z}`;
         if (keys.has(key)) continue;
         keys.add(key);
         list.push({ x: loc.x, y: loc.y, z: loc.z, d: dimensionId });
-        changed = true;
+        added++;
     }
-    if (changed) savePendingCrops(list);
+    if (added) savePendingCrops(list);
     syncCropTimer(list);
+    return added;
 }
 
 // --- the swap ---------------------------------------------------------------
@@ -178,7 +179,7 @@ function sweepAround(player, radius, height, label) {
 
     let converted = 0;
     let growing = 0;
-    let discoveredCrops = [];
+    const discoveredCrops = [];
 
     system.runJob(function* () {
         for (let dx = -radius; dx <= radius; dx++) {
@@ -196,20 +197,16 @@ function sweepAround(player, radius, height, label) {
                     } else if (block?.typeId === VANILLA_CROP) {
                         growing++;
                         discoveredCrops.push({ ...block.location });
-                        if (discoveredCrops.length === CROP_DISCOVERY_BATCH) {
-                            trackCrops(discoveredCrops, dim.id);
-                            discoveredCrops = [];
-                        }
                     }
                     yield; // hand control back to the game each block
                 }
             }
         }
-        trackCrops(discoveredCrops, dim.id);
+        const newlyTracked = trackCrops(discoveredCrops, dim.id);
         sweepRunning = false;
         if (converted > 0) player.sendMessage(message(`${label}.complete`, converted));
         else if (growing === 0) player.sendMessage(message(`${label}.empty`));
-        if (growing > 0) player.sendMessage(message("crops.tracked", growing));
+        if (newlyTracked > 0) player.sendMessage(message("crops.tracked", newlyTracked));
     }());
 }
 

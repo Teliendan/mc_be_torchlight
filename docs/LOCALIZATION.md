@@ -5,11 +5,7 @@ Commit: `Localize torchlight with contextual catalogs and nine locales`.
 
 Owner approved English, Czech, Spanish Spain/Mexico, Portuguese Portugal/Brazil, German, French and Polish, with context and localization required during future development. Catalogs are mod-scoped.
 
-Source of truth: `localization/catalog.json` (15 entries across all packs). It includes meaning, UI location, trigger, tone, grammar, constraints, typed argument meanings, locale wording, freshness and review status. English is the source; eight target locales are AI-authored contextual drafts. No native-language review or game testing of this localization pass is claimed. Explicit compatibility aliases en_GB=en_US and fr_CA=fr_FR are generated.
-
-2026-10-22: optional seed-override test BP has localized title/description in
-all nine locales and aliases. The description states the immediate grown
-flower result and asks players to disable the test afterward.
+Source of truth: `localization/catalog.json` (13 entries across all packs). It includes meaning, UI location, trigger, tone, grammar, constraints, typed argument meanings, locale wording, freshness and review status. English is the source; eight target locales are AI-authored contextual drafts. No native-language review or game testing of this localization pass is claimed. Explicit compatibility aliases en_GB=en_US and fr_CA=fr_FR are generated.
 
 2026-10-21: added the growing-crop registration message for setup/sweep, with
 all nine locales and aliases. Crop-only discovery no longer reports an empty
