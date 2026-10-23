@@ -25,4 +25,4 @@ events discover immediate neighbours, and native `onRandomTick` is an eventual f
 timeouts (no recovery at randomTickSpeed 0). Removing the old [2,2] timer removed the reported game lag.
 
 Not yet checked in game: rapid/concurrent pistons and chunk reloads. Reusable guidance: workspace
-docs/bedrock-script-performance.md.
+.claude/skills/bedrock-scripting/references/performance.md.
