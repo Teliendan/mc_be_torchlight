@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "id": "torchlight",
+  "name": "Glowing Torchflower",
+  "locale": "en_US",
+  "adapter": "bedrock",
+  "behaviorPacks": [
+    "torchlight_bp"
+  ],
+  "resourcePacks": [
+    "torchlight_rp"
+  ],
+  "coverage": [
+    {
+      "pattern": "torchlight_bp/scripts/main.js",
+      "featureId": "torchlight:torchflower"
+    },
+    {
+      "pattern": "torchlight_bp/scripts/messages.js",
+      "featureId": "torchlight:torchflower"
+    },
+    {
+      "pattern": "torchlight_bp/scripts/support.js",
+      "featureId": "torchlight:torchflower"
+    },
+    {
+      "pattern": "torchlight_bp/scripts/support_motion_service.js",
+      "featureId": "torchlight:torchflower"
+    }
+  ],
+  "ruleValues": []
+}

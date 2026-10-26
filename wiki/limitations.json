@@ -1,0 +1,106 @@
+[
+  {
+    "featureId": "torchlight:torchflower",
+    "id": "torchlight:torchflower/pot",
+    "text": "A normally potted torchflower does not glow.",
+    "evidence": [
+      {
+        "path": "docs/VANILLA_PARITY.md",
+        "sha256": "b3a2758b4ab44bad9944f5c5633cdfbb48f4e9ef55ef319374046bd5431fba36"
+      },
+      {
+        "path": "torchlight_bp/blocks/torchflower.json",
+        "sha256": "592baf90a9d76340c671f982592c0b1b0b0aa4365c7fbf7fe7362a3cfe51da22"
+      },
+      {
+        "path": "torchlight_bp/scripts/main.js",
+        "sha256": "a291f7c2998918dd8e840fa64bfb128458d172ff9b24f91145284e6c2efda020"
+      },
+      {
+        "path": "torchlight_bp/scripts/messages.js",
+        "sha256": "cff4fa7e380e981bc43895981970188240a5d0c00b768892d4eb914c90ed057a"
+      },
+      {
+        "path": "torchlight_bp/scripts/support.js",
+        "sha256": "29106361b043eb3342148404f835aa4efc83616c1b72c5a2b6a6418d3cff9b66"
+      },
+      {
+        "path": "torchlight_bp/scripts/support_motion_service.js",
+        "sha256": "32addb6d0db9a94724f80aa8eca42d86c2fd02c502d7854f11f577d52a8a75a7"
+      }
+    ]
+  },
+  {
+    "featureId": "torchlight:torchflower",
+    "id": "torchlight:torchflower/farmer",
+    "text": "Farmer-planted flowers and flowers away from the initial setup area can stay unlit until a nearby sweep.",
+    "evidence": [
+      {
+        "path": "docs/VANILLA_PARITY.md",
+        "sha256": "b3a2758b4ab44bad9944f5c5633cdfbb48f4e9ef55ef319374046bd5431fba36"
+      },
+      {
+        "path": "torchlight_bp/blocks/torchflower.json",
+        "sha256": "592baf90a9d76340c671f982592c0b1b0b0aa4365c7fbf7fe7362a3cfe51da22"
+      },
+      {
+        "path": "torchlight_bp/scripts/main.js",
+        "sha256": "a291f7c2998918dd8e840fa64bfb128458d172ff9b24f91145284e6c2efda020"
+      },
+      {
+        "path": "torchlight_bp/scripts/messages.js",
+        "sha256": "cff4fa7e380e981bc43895981970188240a5d0c00b768892d4eb914c90ed057a"
+      },
+      {
+        "path": "torchlight_bp/scripts/support.js",
+        "sha256": "29106361b043eb3342148404f835aa4efc83616c1b72c5a2b6a6418d3cff9b66"
+      },
+      {
+        "path": "torchlight_bp/scripts/support_motion_service.js",
+        "sha256": "32addb6d0db9a94724f80aa8eca42d86c2fd02c502d7854f11f577d52a8a75a7"
+      }
+    ]
+  },
+  {
+    "featureId": "torchlight:torchflower",
+    "id": "torchlight:torchflower/bees",
+    "text": "The placed glowing flower does not supply nectar to bees or help produce tree nests. The ordinary flower item can still be used to feed bees.",
+    "evidence": [
+      {
+        "path": "docs/VANILLA_PARITY.md",
+        "sha256": "b3a2758b4ab44bad9944f5c5633cdfbb48f4e9ef55ef319374046bd5431fba36"
+      },
+      {
+        "path": "torchlight_bp/blocks/torchflower.json",
+        "sha256": "592baf90a9d76340c671f982592c0b1b0b0aa4365c7fbf7fe7362a3cfe51da22"
+      },
+      {
+        "path": "torchlight_bp/scripts/main.js",
+        "sha256": "a291f7c2998918dd8e840fa64bfb128458d172ff9b24f91145284e6c2efda020"
+      },
+      {
+        "path": "torchlight_bp/scripts/messages.js",
+        "sha256": "cff4fa7e380e981bc43895981970188240a5d0c00b768892d4eb914c90ed057a"
+      },
+      {
+        "path": "torchlight_bp/scripts/support.js",
+        "sha256": "29106361b043eb3342148404f835aa4efc83616c1b72c5a2b6a6418d3cff9b66"
+      },
+      {
+        "path": "torchlight_bp/scripts/support_motion_service.js",
+        "sha256": "32addb6d0db9a94724f80aa8eca42d86c2fd02c502d7854f11f577d52a8a75a7"
+      }
+    ]
+  },
+  {
+    "featureId": "torchlight:torchflower",
+    "id": "torchlight:torchflower/lava",
+    "text": "Do not rely on lava to clear a glowing torchflower. Break it directly or wash it away with water.",
+    "evidence": [
+      {
+        "path": "docs/TEST_FEEDBACK_2026-10-25.md",
+        "sha256": "b1ddc493974358bcc565e3934d14bf4fcd9c2c1a7372842c8d129620732ee9d0"
+      }
+    ]
+  }
+]

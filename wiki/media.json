@@ -1,0 +1,9 @@
+[
+  {
+    "id": "torchlight:torchflower/icon",
+    "featureId": "torchlight:torchflower",
+    "source": "torchlight_rp/textures/blocks/torchflower.png",
+    "kind": "texture",
+    "alt": "Glowing Torchflower"
+  }
+]
