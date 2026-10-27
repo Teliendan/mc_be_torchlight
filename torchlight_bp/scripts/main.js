@@ -191,10 +191,11 @@ function sweepAround(player, radius, height, label) {
                     } catch {
                         block = undefined;
                     }
-                    if (block?.typeId === VANILLA_FLOWER) {
+                    const type = block?.typeId;
+                    if (type === VANILLA_FLOWER) {
                         makeGlowing(block);
                         converted++;
-                    } else if (block?.typeId === VANILLA_CROP) {
+                    } else if (type === VANILLA_CROP) {
                         growing++;
                         discoveredCrops.push({ ...block.location });
                     }
