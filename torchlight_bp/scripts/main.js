@@ -26,7 +26,7 @@ const flowerSupport = createTorchflowerSupport(system);
 system.beforeEvents.startup.subscribe(({ blockComponentRegistry }) => {
     blockComponentRegistry.registerCustomComponent("torchlight:support", {
         onPlace({ block }) { flowerSupport.observe(block, { reset: true }); },
-        onRandomTick({ block }) { flowerSupport.observe(block); },
+        onRandomTick({ block }) { flowerSupport.tick(block); },
         onBreak({ block }) { flowerSupport.invalidate(block.dimension, block.location); },
     });
 });
